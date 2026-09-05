@@ -44,6 +44,8 @@ npm install --prefix apps/web
 npm run dev --prefix apps/web
 ```
 
+The CLI prove path installs `snarkjs` with `packages/cli`. The web app copies ceremony keys on `npm run dev`.
+
 Open [http://127.0.0.1:5180/](http://127.0.0.1:5180/). Switch MetaMask to Sepolia. ETH has no mint; tDAI / tLUSD mint from **Get tokens** in the footer.
 
 Silent send (optional):

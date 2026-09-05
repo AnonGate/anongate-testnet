@@ -66,7 +66,16 @@ async function loadSdk() {
 }
 
 function loadSnarkjs() {
-  return require(path.resolve(__dirname, "../../circuits/node_modules/snarkjs"));
+  const candidates = [
+    path.resolve(__dirname, "../node_modules/snarkjs"),
+    path.resolve(__dirname, "../../circuits/node_modules/snarkjs"),
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return require(p);
+  }
+  throw new Error(
+    "snarkjs not found. From packages/cli run: npm install"
+  );
 }
 
 function printHelp() {

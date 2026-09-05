@@ -19,6 +19,8 @@ npm install --prefix packages/relayer
 npm install --prefix apps/web
 ```
 
+`packages/cli` includes `snarkjs` so deposit/withdraw proofs work after that install. `packages/circuits` is only required to rebuild circuits.
+
 Copy env templates; never commit the copies. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
 ## Checks
