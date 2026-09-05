@@ -49,7 +49,7 @@
     },
     "provingKeys": "ceremony-finals",
     "ceremonyStatus": "phase2-final-sepolia",
-    "ceremonyNote": "Verifiers exported from packages/circuits/ceremony/finals. Contributors: eduadiez, jasmine, roman, dan, evan. Beacon: Ethereum block 25790171.",
+    "ceremonyNote": "Verifiers exported from packages/circuits/ceremony/finals. Contributors: eduadiez, jasmine, roman, dan, evan. Beacon: Ethereum block 25790171. Transcripts: https://github.com/AnonGate/anongate-ceremony",
     "feeRecipient": "0x98f28F2818de6A7120C6b1887611B14935d27e72",
     "localTrustedKeys": false
   },

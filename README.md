@@ -29,6 +29,8 @@ Live Sepolia addresses are in [`deployments/pools.sepolia.json`](deployments/poo
 
 Yes. Proving keys and wasm for the live Sepolia circuits are in [`packages/circuits/ceremony/finals/`](packages/circuits/ceremony/finals/). Those files are public (anyone who proves needs them). They are not private keys or Recovery Codes.
 
+The Phase-2 ceremony record (5 contributors + Ethereum beacon, same finals intended for later mainnet) is in a separate repo: [anongate-ceremony](https://github.com/AnonGate/anongate-ceremony).
+
 No `.env` is required to browse the UI. A relayer `.env` is required only for Silent send. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
 ## Quick start
@@ -81,6 +83,7 @@ cd packages/contracts && forge test
 - [Environment files](docs/ENVIRONMENT.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
+- [Ceremony transcripts](https://github.com/AnonGate/anongate-ceremony)
 
 ## License
 

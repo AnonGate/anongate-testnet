@@ -10,3 +10,5 @@ withdraw_partial_final.zkey + withdraw_partial.wasm + withdraw_partial_vkey.json
 ```
 
 Still **not** mainnet-safe: no external audit.
+
+Full contribution chain: [anongate-ceremony](https://github.com/AnonGate/anongate-ceremony).

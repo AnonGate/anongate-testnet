@@ -34,4 +34,8 @@ Immutable at deploy: **110 ppm** deposit, **400 ppm** withdraw floor. Fees go to
 
 Web, CLI, and Python share the same registry and note format. They talk to Ethereum JSON-RPC directly. The relayer accepts only `{ chainId, to, data }` — never notes or keys.
 
-Mainnet is refused until a dedicated production registry is published.
+## Ceremony
+
+Sepolia verifiers were exported from a Phase-2 ceremony (5 contributors, then Ethereum block `25790171` as beacon). The same finals are intended for a later mainnet deploy. Transcripts: [anongate-ceremony](https://github.com/AnonGate/anongate-ceremony). A ceremony is not an audit.
+
+Mainnet clients stay blocked until a dedicated production registry is published.

@@ -42,4 +42,4 @@ Create a note, prove deposit, broadcast, sync state, then prove a 1-in withdraw.
 
 ## Honesty
 
-Unaudited. Ceremony Phase-2 keys (5 contributors + Ethereum block beacon). Empty trees at v11 deploy. Privacy labels in the UI describe set size only — they are not a cryptographic guarantee.
+Unaudited. Ceremony Phase-2 keys (5 contributors + Ethereum block beacon). Transcripts: [anongate-ceremony](https://github.com/AnonGate/anongate-ceremony). Empty trees at v11 deploy. Privacy labels in the UI describe set size only — they are not a cryptographic guarantee.

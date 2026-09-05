@@ -25,6 +25,8 @@ Never commit or paste:
 
 Templates live in `*.example` files. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
+Ceremony contribution files and finals are public verification artifacts, not spending secrets. The record is [anongate-ceremony](https://github.com/AnonGate/anongate-ceremony). Contributor random phrases are not published.
+
 ## Reporting
 
 If you find a vulnerability in this repository, open a private GitHub security advisory on [AnonGate/anongate-testnet](https://github.com/AnonGate/anongate-testnet) rather than a public issue.
