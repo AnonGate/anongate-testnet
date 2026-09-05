@@ -12,6 +12,7 @@ const circuitsRoot = path.resolve(root, "../../packages/circuits");
 const buildDir = path.join(circuitsRoot, "build");
 const localTrusted = path.join(circuitsRoot, "keys", "local-trusted");
 const ceremonyFinals = path.join(circuitsRoot, "ceremony", "finals");
+const disclosureDir = path.join(circuitsRoot, "artifacts", "disclosure");
 const outDir = path.join(root, "public", "circuits");
 const sepoliaRegistry = path.resolve(
   root,
@@ -52,15 +53,22 @@ function resolveKeyPair(circuit) {
 
 const trustedCircuits = ["deposit", "withdraw", "withdraw_1in", "withdraw_partial"];
 
+function resolveWasm(name) {
+  const candidates = [
+    path.join(ceremonyFinals, `${name}.wasm`),
+    path.join(disclosureDir, `${name}.wasm`),
+    path.join(buildDir, `${name}_js`, `${name}.wasm`),
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  throw new Error(`missing wasm for ${name}`);
+}
+
 const files = [];
 for (const name of trustedCircuits) {
-  const wasmSrc = path.join(buildDir, `${name}_js`, `${name}.wasm`);
-  if (!fs.existsSync(wasmSrc)) {
-    console.error("missing", wasmSrc);
-    process.exit(1);
-  }
   const keys = resolveKeyPair(name);
-  files.push([wasmSrc, `${name}.wasm`]);
+  files.push([resolveWasm(name), `${name}.wasm`]);
   // Web prove* paths expect *_trusted_* filenames (legacy CLI naming).
   files.push([keys.zkey, `${name}_trusted_final.zkey`]);
   files.push([keys.vkey, `${name}_trusted_vkey.json`]);
@@ -68,17 +76,21 @@ for (const name of trustedCircuits) {
 
 // Disclosure (still product): depth-independent *_dev artifacts
 const disclosure = [
-  ["ownership_dev_js/ownership_dev.wasm", "ownership_dev.wasm"],
-  ["ownership_dev_final.zkey", "ownership_dev_final.zkey"],
-  ["ownership_dev_vkey.json", "ownership_dev_vkey.json"],
-  ["value_bound_dev_js/value_bound_dev.wasm", "value_bound_dev.wasm"],
-  ["value_bound_dev_final.zkey", "value_bound_dev_final.zkey"],
-  ["value_bound_dev_vkey.json", "value_bound_dev_vkey.json"],
+  "ownership_dev.wasm",
+  "ownership_dev_final.zkey",
+  "ownership_dev_vkey.json",
+  "value_bound_dev.wasm",
+  "value_bound_dev_final.zkey",
+  "value_bound_dev_vkey.json",
 ];
-for (const [srcRel, destName] of disclosure) {
-  const src = path.join(buildDir, srcRel);
-  if (!fs.existsSync(src)) {
-    console.error("missing", src);
+for (const destName of disclosure) {
+  const src = [
+    path.join(disclosureDir, destName),
+    path.join(buildDir, destName),
+    path.join(buildDir, destName.replace(/\.wasm$/, "_js") + path.sep + destName),
+  ].find((p) => fs.existsSync(p));
+  if (!src) {
+    console.error("missing", destName);
     process.exit(1);
   }
   files.push([src, destName]);
@@ -115,6 +127,6 @@ for (const stale of [
 }
 
 console.log(
-  "synced browser circuits (depth-20 LOCAL TRUSTED deposit/withdraw* + disclosure *_dev) + registries"
+  "synced browser circuits (ceremony finals + disclosure) + registries"
 );
 console.log("(transfer_dev not synced — obsolete for product path)");

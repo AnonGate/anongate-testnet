@@ -6,3 +6,7 @@
 !ceremony_params.template.json
 !finals/
 !finals/.gitkeep
+!finals/README.md
+!finals/*.zkey
+!finals/*.wasm
+!finals/*.json

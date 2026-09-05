@@ -27,9 +27,7 @@ Live Sepolia addresses are in [`deployments/pools.sepolia.json`](deployments/poo
 
 ## Can you run this after a clone?
 
-Yes, for reading the code, running contract tests, and opening the UI.
-
-Proving (deposit / withdraw) needs Groth16 `.zkey` / `.wasm` files. Those artifacts are **not** in git (size). Place ceremony finals under `packages/circuits/ceremony/finals/` or trusted-local keys under `packages/circuits/keys/local-trusted/`. Without them, `npm run dev` in the web app will fail at circuit sync / prove.
+Yes. Proving keys and wasm for the live Sepolia circuits are in [`packages/circuits/ceremony/finals/`](packages/circuits/ceremony/finals/). Those files are public (anyone who proves needs them). They are not private keys or Recovery Codes.
 
 No `.env` is required to browse the UI. A relayer `.env` is required only for Silent send. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 

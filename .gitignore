@@ -19,6 +19,11 @@ packages/relayer/.env
 *.sym
 *.zkey
 *.ptau
+# Published proving artifacts (not secrets — required to generate proofs)
+!packages/circuits/ceremony/finals/*.zkey
+!packages/circuits/ceremony/finals/*.wasm
+!packages/circuits/artifacts/disclosure/*.zkey
+!packages/circuits/artifacts/disclosure/*.wasm
 .DS_Store
 notes.json
 notes_tmp.json

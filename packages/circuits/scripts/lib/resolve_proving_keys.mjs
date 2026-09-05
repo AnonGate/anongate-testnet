@@ -69,9 +69,13 @@ export function resolveProvingKeys(circuit, opts = {}) {
  */
 export function resolveCircuitWasm(circuit, opts = {}) {
   const root = opts.circuitsRoot ? path.resolve(opts.circuitsRoot) : circuitsRoot;
-  const wasm = path.join(root, "build", `${circuit}_js`, `${circuit}.wasm`);
-  if (!fs.existsSync(wasm)) {
-    throw new Error(`missing wasm for ${circuit}: ${wasm}`);
+  const candidates = [
+    path.join(root, "ceremony", "finals", `${circuit}.wasm`),
+    path.join(root, "artifacts", "disclosure", `${circuit}.wasm`),
+    path.join(root, "build", `${circuit}_js`, `${circuit}.wasm`),
+  ];
+  for (const wasm of candidates) {
+    if (fs.existsSync(wasm)) return wasm;
   }
-  return wasm;
+  throw new Error(`missing wasm for ${circuit}. Checked:\n${candidates.map((p) => `  - ${p}`).join("\n")}`);
 }

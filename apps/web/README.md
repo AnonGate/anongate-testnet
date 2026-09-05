@@ -13,7 +13,7 @@ npm run dev --prefix apps/web
 
 Open [http://127.0.0.1:5180/](http://127.0.0.1:5180/). Sepolia is the live network. Mainnet is listed as soon and stays blocked.
 
-Proving copies circuit artifacts via `npm run sync:circuits`. That step needs `.zkey` / `.wasm` files under `packages/circuits/ceremony/finals/` or `packages/circuits/keys/local-trusted/`.
+Proving copies circuit artifacts via `npm run sync:circuits` from `packages/circuits/ceremony/finals/` (included in this repo).
 
 ## Product
 

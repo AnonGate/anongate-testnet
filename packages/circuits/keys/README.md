@@ -2,8 +2,8 @@
 
 | Path | Role | Mainnet? |
 |------|------|----------|
-| `local-trusted/` | Single-party trusted setup used for Sepolia depth-20 | **No** |
-| `../ceremony/finals/` | Phase-2 ceremony outputs used by current Sepolia pools | **No** until audit + mainnet deploy |
+| `local-trusted/` | Single-party trusted setup (local fallback, not in git) | **No** |
+| `../ceremony/finals/` | Phase-2 ceremony outputs + wasm used by current Sepolia pools | **No** until audit + mainnet deploy |
 | `../build/*_trusted_*` | Build-tree copy of local-trusted keys (CLI/web fallback) | **No** |
 
 ## Resolver (single switch point)
