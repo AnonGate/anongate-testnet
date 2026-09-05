@@ -115,11 +115,9 @@ async function main() {
   );
 
   const docs = {
-    requirements: fs.existsSync(path.join(root, "CEREMONY_REQUIREMENTS_V1.md")),
-    opsRunbook: fs.existsSync(path.join(root, "CEREMONY_OPS_RUNBOOK_V1.md")),
-    coordinatorBrief: fs.existsSync(
-      path.join(root, "CEREMONY_COORDINATOR_BRIEF_V1.md")
-    ),
+    protocol: fs.existsSync(path.join(root, "docs/PROTOCOL.md")),
+    security: fs.existsSync(path.join(root, "SECURITY.md")),
+    ceremonyReadme: fs.existsSync(path.join(root, "packages/circuits/ceremony/README.md")),
     manifestTemplate: fs.existsSync(
       path.join(ceremonyDir, "manifest.expected.template.json")
     ),
@@ -156,8 +154,8 @@ async function main() {
     CIRCUIT_NAMES.every((name) => Boolean(sources[name])) &&
     CIRCUIT_NAMES.every((name) => Boolean(r1cs[name])) &&
     Boolean(ptau) &&
-    docs.requirements &&
-    docs.opsRunbook &&
+    docs.protocol &&
+    docs.ceremonyReadme &&
     docs.manifestTemplate;
 
   const report = {
@@ -188,7 +186,7 @@ async function main() {
     },
     nextCoordinatorSteps: [
       "Freeze this preflight output (git commit + r1cs hashes) before inviting contributors",
-      "Publish contribution instructions from CEREMONY_OPS_RUNBOOK_V1.md Phase C",
+      "Publish contribution instructions from packages/circuits/contributor-kit",
       "Fill ceremony_params.json and run ap ceremony invite before public recruitment",
       "Collect ≥N independent contributions + attestations",
       "Fill the v2 ceremony manifest for deposit, withdraw, withdraw_1in, and withdraw_partial from finals only — never paste *_trusted hashes",

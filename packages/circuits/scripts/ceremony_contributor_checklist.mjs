@@ -43,11 +43,11 @@ const checks = [
     id: "docs",
     label: "Ceremony docs present",
     run: () => {
-      const a = fs.existsSync(path.join(root, "CEREMONY_REQUIREMENTS_V1.md"));
-      const b = fs.existsSync(path.join(root, "CEREMONY_OPS_RUNBOOK_V1.md"));
+      const a = fs.existsSync(path.join(root, "docs/PROTOCOL.md"));
+      const b = fs.existsSync(path.join(root, "packages/circuits/ceremony/README.md"));
       return {
         ok: a && b,
-        detail: a && b ? "requirements + ops runbook" : "missing ceremony docs",
+        detail: a && b ? "protocol + ceremony README" : "missing ceremony docs",
       };
     },
   },
@@ -75,10 +75,10 @@ const checks = [
     id: "coordinator_brief",
     label: "Coordinator brief present",
     run: () => {
-      const p = path.join(root, "CEREMONY_COORDINATOR_BRIEF_V1.md");
+      const p = path.join(root, "packages/circuits/contributor-kit/READ-ME.txt");
       return fs.existsSync(p)
-        ? { ok: true, detail: "CEREMONY_COORDINATOR_BRIEF_V1.md" }
-        : { ok: false, detail: "coordinator brief missing" };
+        ? { ok: true, detail: "packages/circuits/contributor-kit/READ-ME.txt" }
+        : { ok: false, detail: "contributor kit missing" };
     },
   },
   {
@@ -122,7 +122,7 @@ console.log(
       warning:
         "Passing this checklist does not mean a ceremony happened. Mainnet remains No-Go until Phase 2 MPC finals replace *_trusted.",
       nextSteps: [
-        "Read CEREMONY_OPS_RUNBOOK_V1.md Phase C and CEREMONY_COORDINATOR_BRIEF_V1.md",
+        "Read packages/circuits/ceremony/README.md and the contributor-kit READ-ME",
         "Wait for coordinator contribution instructions + frozen preflight hashes",
         "Publish attestation + contribution hash publicly",
         "Never treat local trusted setup as ceremony",

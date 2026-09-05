@@ -4,7 +4,7 @@
   "chainId": 1,
   "network": "ethereum-mainnet",
   "status": "blocked — ceremony required; addresses null until per-asset DeployMainnet",
-  "policy": "MULTI_ASSET_POOLS_V1.md",
+  "policy": "See docs/PROTOCOL.md",
   "shared": {
     "poseidon": null,
     "depositVerifier": null,

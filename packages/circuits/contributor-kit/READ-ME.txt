@@ -1,23 +1,21 @@
-AnonGate — مساهمة حقيقية (Phase 2)
+AnonGate ceremony contributor kit (Phase 2)
 
-محتاج: لابتوب ويندوز + Node.js من https://nodejs.org (LTS)
-المدة: أول مرة 15–40 دقيقة (تثبيت + 4 ملفات). سيّب الشباك مفتوح.
+Needs: Windows laptop + Node.js LTS from https://nodejs.org
+First run: 15–40 minutes (install + four files). Leave the window open.
 
-1) فك الضغط عن المجلد
-2) دبل كليك run.bat
-3) اكتب اسم أو لقب (مثال: sara)
-4) اكتب جملة عشوائية 20 حرف على الأقل
-   مثال: koshary on friday night with extra garlic
-   الجملة سر. متبعتهاش في الشات.
-5) استنى كلمة DONE (هيعدّي على 4 ملفات)
-6) ابعت في تيليجرام المجلد out بالكامل
-   جواه 4 ملفات .zkey + ملف hashes.txt
-7) امسح المجلد الكبير من جهازك بعد ما تبعت
+1) Unzip this folder
+2) Double-click run.bat
+3) Enter a name or nickname
+4) Enter a random sentence of at least 20 characters
+   That sentence is secret. Do not send it in chat.
+5) Wait for DONE (four files)
+6) Send only the out folder (four .zkey files + hashes.txt)
+7) Delete the large folder from your machine after you send it
 
-متبعتش غير مجلد out
-متبعتش الجملة العشوائية
-متبعتش سكرين شوت للقنصل
-متبعتش مجلد input
+Do not send anything except the out folder.
+Do not send the random sentence.
+Do not send console screenshots.
+Do not send the input folder.
 
-لو قال Random text is too short شغّل run.bat تاني بجملة أطول.
-لو النت قطع أثناء npm install شغّل run.bat تاني.
+If you see "Random text is too short", run run.bat again with a longer sentence.
+If npm install fails because of the network, run run.bat again.

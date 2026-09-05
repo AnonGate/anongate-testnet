@@ -3,7 +3,7 @@
   "version": 1,
   "chainId": 1,
   "network": "ethereum-mainnet",
-  "policy": "MULTI_ASSET_POOLS_V1.md — one ShieldedPool per asset; no cross-asset redeem",
+  "policy": "See docs/PROTOCOL.md — one ShieldedPool per asset; no cross-asset redeem",
   "assets": [
     {
       "id": "weth",

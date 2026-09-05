@@ -33,7 +33,7 @@ export const HELP = {
   recoveryCode:
     "Primary backup: a long AP1-… (encrypted) or AP1P-… (skipped password) code. Never share it in chat or screenshots. If you skipped a password, the code alone can spend.",
   optionalApnote:
-    "Optional file with the same payload as the Recovery Code — useful if you prefer a file over pasting text. Encrypted backups use .apnote; skipped-password backups use JSON.",
+    "Optional file with the same payload as the Recovery Code — useful if you prefer a file over pasting text. Encrypted backups use .apnote; skipped-password backups use JSON.",
   sessionNotes:
     "Notes loaded only in this tab’s memory. Closing the tab clears them unless you saved a Recovery Code / file.",
   withdrawModeFull:
@@ -62,8 +62,6 @@ export const HELP = {
     "Sepolia helpers: switch network, mint experimental tDAI/tLUSD, or fund native ETH. Not for Mainnet.",
   mintAmount:
     "How many experimental test tokens to mint to your wallet (permissionless on Sepolia test tokens).",
-  founderRemaining:
-    "Founder checklist of what is still outside the app: Trusted Ceremony (MPC), external audit, and filling ceremony_params. Sepolia testing does not require these.",
 } as const;
 
 export type HelpKey = keyof typeof HELP;

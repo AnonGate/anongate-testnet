@@ -2,7 +2,7 @@
  * On-chain memo stubs — NOT wired; deferred by product decision.
  *
  * Adopted delivery: offline `incomingNote` + payment address
- * (`NOTE_DELIVERY_ADOPTED_V1.md`). Design archive: `ONCHAIN_MEMO_DESIGN_V1.md`.
+ * (see docs/PROTOCOL.md). On-chain encrypted memo is not implemented.
  */
 
 import {
@@ -14,7 +14,7 @@ import {
 import { parsePaymentAddress } from "./paymentAddress.js";
 
 export const ONCHAIN_MEMO_DESIGN_DOC = "ONCHAIN_MEMO_DESIGN_V1.md";
-export const NOTE_DELIVERY_ADOPTED_DOC = "NOTE_DELIVERY_ADOPTED_V1.md";
+export const NOTE_DELIVERY_ADOPTED_DOC = "docs/PROTOCOL.md";
 
 export const ONCHAIN_MEMO_STATUS = {
   implemented: false as const,

@@ -1,26 +1,13 @@
 # Contracts
 
-## Status
-- `ShieldedPool.sol` implemented as non-custodial scaffold
-- no admin keys / no emergency withdraw
-- deposit + Merkle insert live
-- transfer/withdraw verify via immutable Groth16 verifier addresses
-- claimRewards intentionally reverts until private reward design is finalized
+`ShieldedPool` is non-upgradeable and has no owner. Deposit inserts a commitment. Withdraw verifies a Groth16 proof and pays a public recipient. There is no on-chain withdraw delay. `transfer` is removed from the live pools.
 
-## Important
-- `MockPoseidon2` is for tests only and is NOT circomlib-compatible
-- Production must wire a real Poseidon(2) matching the Circom circuits
-- Production must replace mock verifiers with snarkjs-generated verifiers
+Fees and the fee recipient are immutable. The recipient can take only the fee balance.
 
 ## Test
-Foundry tests currently pass:
 
 ```bash
-forge test -vv
+forge test
 ```
 
-Results:
-- deposit inserts commitment and takes fee
-- withdraw enforces waiting window
-- invalid proof is rejected
-- no admin surface sanity check
+Live Sepolia addresses: `deployments/pools.sepolia.json`.

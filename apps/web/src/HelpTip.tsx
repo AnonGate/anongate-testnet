@@ -247,19 +247,3 @@ export function LabelWithHelp(props: {
   );
 }
 
-export type FounderRemainingItem = {
-  id: string;
-  title: string;
-  summary: string;
-  owner: "you" | "optional-help";
-  when: string;
-  docs: string[];
-};
-
-export type FounderRemainingDoc = {
-  format: string;
-  version: number;
-  updatedAt: string;
-  intro: string;
-  items: FounderRemainingItem[];
-};

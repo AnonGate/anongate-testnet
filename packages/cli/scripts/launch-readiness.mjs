@@ -81,19 +81,19 @@ function gateA() {
       detail: "ShieldedPool.withdrawOpsFees",
     },
     {
-      id: "note_distribute",
-      ok: exists("NOTE_DISTRIBUTE_V1.md"),
-      detail: "NOTE_DISTRIBUTE_V1.md",
+      id: "protocol_doc",
+      ok: exists("docs/PROTOCOL.md"),
+      detail: "docs/PROTOCOL.md",
     },
     {
-      id: "offline_delivery_adopted",
-      ok: exists("NOTE_DELIVERY_ADOPTED_V1.md"),
-      detail: "NOTE_DELIVERY_ADOPTED_V1.md",
+      id: "sepolia_doc",
+      ok: exists("docs/SEPOLIA.md"),
+      detail: "docs/SEPOLIA.md",
     },
     {
-      id: "multi_asset_policy",
-      ok: exists("MULTI_ASSET_POOLS_V1.md"),
-      detail: "MULTI_ASSET_POOLS_V1.md",
+      id: "security_doc",
+      ok: exists("SECURITY.md"),
+      detail: "SECURITY.md",
     },
     {
       id: "assets_mainnet_registry",
@@ -232,14 +232,9 @@ function gateC() {
       detail: "DeployMainnet.s.sol + CeremonyDeployGuard",
     },
     {
-      id: "mainnet_runbook",
-      ok: exists("MAINNET_DEPLOY_RUNBOOK_V1.md"),
-      detail: "MAINNET_DEPLOY_RUNBOOK_V1.md",
-    },
-    {
-      id: "founder_manual",
-      ok: exists("FOUNDER_MAINNET_MANUAL_V1.md"),
-      detail: "FOUNDER_MAINNET_MANUAL_V1.md",
+      id: "public_docs",
+      ok: exists("README.md") && exists("docs/PROTOCOL.md") && exists("SECURITY.md"),
+      detail: "README.md + docs/PROTOCOL.md + SECURITY.md",
     },
     {
       id: "mainnet_pool_deployed",
@@ -271,38 +266,23 @@ function manualSteps(gates) {
       who: "you",
       step:
         "Optional but recommended: run the one-command Sepolia three-pool deployment and fill assets/pools.sepolia.json",
-      doc: "SEPOLIA_EXPERIMENTAL_RUNBOOK_V1.md",
+      doc: "docs/SEPOLIA.md",
     });
   }
   steps.push({
-    who: "you",
-    step: "Recruit ceremony contributors; fill ceremony_params.json; run Phase 2 MPC",
-    doc: "FOUNDER_MAINNET_MANUAL_V1.md §1–2",
+    who: "operator",
+    step: "Complete a reviewed Phase-2 ceremony and place finals under packages/circuits/ceremony/finals/",
+    doc: "docs/PROTOCOL.md",
   });
   steps.push({
-    who: "you",
-    step: "Place finals in ceremony/finals/ then run npm run ceremony:export-verifiers",
-    doc: "FOUNDER_MAINNET_MANUAL_V1.md §3",
+    who: "operator",
+    step: "Export verifiers, deploy one mainnet pool per asset, fill deployments/pools.mainnet.json",
+    doc: "docs/PROTOCOL.md",
   });
   steps.push({
-    who: "you",
-    step: "Fill manifest.expected.json (ceremony-final|accepted) — never paste *_trusted",
-    doc: "FOUNDER_MAINNET_MANUAL_V1.md §3",
-  });
-  steps.push({
-    who: "you",
-    step: "Deploy Poseidon + ceremony verifiers + one ShieldedPool per asset (WETH/DAI/LUSD); fill pools.mainnet.json; set OPS_FEE_RECIPIENT",
-    doc: "FOUNDER_MAINNET_MANUAL_V1.md §4",
-  });
-  steps.push({
-    who: "you",
-    step: "Run fail-closed post-deploy RPC verification for all three pools and archive the JSON report plus external bytecode review",
-    doc: "MAINNET_DEPLOY_RUNBOOK_V1.md §After deploy",
-  });
-  steps.push({
-    who: "you",
-    step: "External audit before large liquidity; then remove experimental UI copy",
-    doc: "EXTERNAL_AUDIT_CHECKLIST_V1.md",
+    who: "operator",
+    step: "External audit before any real-user mainnet liquidity",
+    doc: "SECURITY.md",
   });
   return steps;
 }
@@ -321,14 +301,14 @@ function main() {
     agentPrepared: [
       "Contracts: opsFeeRecipient + withdrawOpsFees",
       "DeploySepolia + DeployMainnet + CeremonyDeployGuard",
-      "Multi-asset: WETH/DAI/LUSD separate pools (MULTI_ASSET_POOLS_V1 + assets/pools registries)",
+      "Multi-asset: ETH/DAI/LUSD separate pools (docs/PROTOCOL.md + assets/pools registries)",
       "Clients: Sepolia banner, mainnet refuse, note distribute, offline delivery, ap assets list",
       "Ceremony: preflight, invite, export-verifiers pipeline",
       "Post-deploy: fail-closed direct-RPC verification (offline readiness checks wiring only)",
-      "Docs: PRODUCTION_READINESS, Sepolia/Mainnet runbooks, founder manual",
+      "Docs: README, SECURITY, docs/PROTOCOL.md, docs/SEPOLIA.md",
     ],
     yourManualNext: manualSteps({ A, B, C }),
-    tip: "Follow FOUNDER_MAINNET_MANUAL_V1.md in order. Do not broadcast mainnet until Gate C evidence exists.",
+    tip: "Mainnet stays blocked until ceremony finals, audit, and a published mainnet registry exist.",
   };
   console.log(JSON.stringify(report, null, 2));
   if (!A.ok) process.exitCode = 1;

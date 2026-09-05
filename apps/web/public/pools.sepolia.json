@@ -5,7 +5,7 @@
   "network": "sepolia",
   "status": "deployed-depth20-ceremony-phase2-v1-etherscan-verified",
   "warning": "Depth-20 pools with Phase-2 ceremony Groth16 keys (5 contributors + Ethereum block beacon). Fees: 0.011% in / 0.04% out, 100% to feeRecipient. Not externally audited. Old local-trusted pools are obsolete.",
-  "policy": "MULTI_ASSET_POOLS_V1.md / CEREMONY_OPS_RUNBOOK_V1.md",
+  "policy": "See docs/PROTOCOL.md",
   "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
   "deployer": "0x0435d21D40dB54480EdCdbd58C2bd72C0d2122d1",
   "shared": {
@@ -84,7 +84,7 @@
     }
   },
   "deployment": {
-    "redesign": "PROTOCOL_REDESIGN_TESTNET_V2.md",
+    "redesign": "docs/PROTOCOL.md",
     "amountBits": 128,
     "rawArtifact": "packages/contracts/scripts/sepolia-depth20-raw.json",
     "gasRebate": false,

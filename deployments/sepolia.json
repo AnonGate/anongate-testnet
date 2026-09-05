@@ -5,7 +5,7 @@
     "network":  "sepolia",
     "status":  "deployed-experimental-redesign-v2",
     "warning":  "Experimental redesign v2 (*_dev verifiers, withdraw1 + withdrawPartial1). Not mainnet or ceremony-secured.",
-    "policy":  "MULTI_ASSET_POOLS_V1.md / PROTOCOL_REDESIGN_TESTNET_V2.md",
+    "policy":  "See docs/PROTOCOL.md",
     "rpc":  "https://ethereum-sepolia-rpc.publicnode.com",
     "deployer":  "0xa1cEFcd8F0f72684c251c3f352E8D13Dd1256d03",
     "shared":  {

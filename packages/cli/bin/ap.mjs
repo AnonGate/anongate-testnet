@@ -160,7 +160,7 @@ Notes:
   - ap ceremony status is preflight only — not proof that Phase 2 MPC completed.
   - ap ceremony invite checks recruitment params; fill ceremony_params.json before going public.
   - ap ops withdraw-fees: opsFeeRecipient only; ops skim — not user principal / not claimRewards.
-  - Multi-asset MVP: separate pools for ETH / tDAI / tLUSD — same asset in/out only (MULTI_ASSET_POOLS_V1.md).
+  - Multi-asset: separate pools for ETH / tDAI / tLUSD — same asset in/out only (docs/PROTOCOL.md).
   - Sepolia (11155111) experimental: --asset eth is native ETH (no mint). dai/lusd are permissionless test tokens.
   - No earliest timestamp or on-chain withdraw delay (WITHDRAW_TIMING_POLICY_V1.md).
   - send / state fetch / scan refuse known mainnets unless --allow-experimental-network.
@@ -3550,12 +3550,11 @@ async function cmdMemoStatus() {
 async function cmdLaunchStatus() {
   const root = path.resolve(__dirname, "../../..");
   const docs = {
-    launchStatus: fs.existsSync(path.join(root, "LAUNCH_STATUS_V1.md")),
-    ceremonyRequirements: fs.existsSync(path.join(root, "CEREMONY_REQUIREMENTS_V1.md")),
-    selectiveDisclosure: fs.existsSync(path.join(root, "SELECTIVE_DISCLOSURE_MVP_V1.md")),
-    noteDeliveryAdopted: fs.existsSync(path.join(root, "NOTE_DELIVERY_ADOPTED_V1.md")),
-    onchainMemoDesign: fs.existsSync(path.join(root, "ONCHAIN_MEMO_DESIGN_V1.md")),
-    trustMatrix: fs.existsSync(path.join(root, "TRUST_PERMISSION_MATRIX_V1.md")),
+    readme: fs.existsSync(path.join(root, "README.md")),
+    security: fs.existsSync(path.join(root, "SECURITY.md")),
+    protocol: fs.existsSync(path.join(root, "docs/PROTOCOL.md")),
+    sepolia: fs.existsSync(path.join(root, "docs/SEPOLIA.md")),
+    environment: fs.existsSync(path.join(root, "docs/ENVIRONMENT.md")),
   };
   const localArtifacts = {
     depositDevZkey: fs.existsSync(path.join(circuitsBuild, "deposit_dev_final.zkey")),
@@ -3663,79 +3662,29 @@ async function cmdDoctor() {
   add("anvil", fs.existsSync(foundryBin("anvil")), foundryBin("anvil"));
   add("cast", fs.existsSync(foundryBin("cast")), foundryBin("cast"));
   add(
-    "production readiness doc",
-    fs.existsSync(path.resolve(__dirname, "../../../PRODUCTION_READINESS_V1.md")),
-    "PRODUCTION_READINESS_V1.md"
+    "readme",
+    fs.existsSync(path.resolve(__dirname, "../../../README.md")),
+    "README.md"
   );
   add(
-    "ceremony requirements doc",
-    fs.existsSync(path.resolve(__dirname, "../../../CEREMONY_REQUIREMENTS_V1.md")),
-    "CEREMONY_REQUIREMENTS_V1.md"
+    "security doc",
+    fs.existsSync(path.resolve(__dirname, "../../../SECURITY.md")),
+    "SECURITY.md"
   );
   add(
-    "sepolia experimental runbook",
-    fs.existsSync(path.resolve(__dirname, "../../../SEPOLIA_EXPERIMENTAL_RUNBOOK_V1.md")),
-    "SEPOLIA_EXPERIMENTAL_RUNBOOK_V1.md"
+    "protocol doc",
+    fs.existsSync(path.resolve(__dirname, "../../../docs/PROTOCOL.md")),
+    "docs/PROTOCOL.md"
   );
   add(
-    "founder mainnet manual",
-    fs.existsSync(path.resolve(__dirname, "../../../FOUNDER_MAINNET_MANUAL_V1.md")),
-    "FOUNDER_MAINNET_MANUAL_V1.md"
+    "sepolia doc",
+    fs.existsSync(path.resolve(__dirname, "../../../docs/SEPOLIA.md")),
+    "docs/SEPOLIA.md"
   );
   add(
-    "mainnet deploy runbook",
-    fs.existsSync(path.resolve(__dirname, "../../../MAINNET_DEPLOY_RUNBOOK_V1.md")),
-    "MAINNET_DEPLOY_RUNBOOK_V1.md"
-  );
-  add(
-    "ceremony ops runbook",
-    fs.existsSync(path.resolve(__dirname, "../../../CEREMONY_OPS_RUNBOOK_V1.md")),
-    "CEREMONY_OPS_RUNBOOK_V1.md"
-  );
-  add(
-    "ceremony coordinator brief",
-    fs.existsSync(path.resolve(__dirname, "../../../CEREMONY_COORDINATOR_BRIEF_V1.md")),
-    "CEREMONY_COORDINATOR_BRIEF_V1.md"
-  );
-  add(
-    "ceremony contributor invite",
-    fs.existsSync(path.resolve(__dirname, "../../../CEREMONY_CONTRIBUTOR_INVITE_V1.md")),
-    "CEREMONY_CONTRIBUTOR_INVITE_V1.md"
-  );
-  add(
-    "launch status doc",
-    fs.existsSync(path.resolve(__dirname, "../../../LAUNCH_STATUS_V1.md")),
-    "LAUNCH_STATUS_V1.md"
-  );
-  add(
-    "privacy health thresholds doc",
-    fs.existsSync(path.resolve(__dirname, "../../../PRIVACY_HEALTH_THRESHOLDS_V1.md")),
-    "PRIVACY_HEALTH_THRESHOLDS_V1.md"
-  );
-  add(
-    "mvp rewards scope doc",
-    fs.existsSync(path.resolve(__dirname, "../../../MVP_REWARDS_SCOPE_V1.md")),
-    "MVP_REWARDS_SCOPE_V1.md"
-  );
-  add(
-    "selective disclosure doc",
-    fs.existsSync(path.resolve(__dirname, "../../../SELECTIVE_DISCLOSURE_MVP_V1.md")),
-    "SELECTIVE_DISCLOSURE_MVP_V1.md"
-  );
-  add(
-    "on-chain memo design doc",
-    fs.existsSync(path.resolve(__dirname, "../../../ONCHAIN_MEMO_DESIGN_V1.md")),
-    "ONCHAIN_MEMO_DESIGN_V1.md"
-  );
-  add(
-    "note delivery adopted doc",
-    fs.existsSync(path.resolve(__dirname, "../../../NOTE_DELIVERY_ADOPTED_V1.md")),
-    "NOTE_DELIVERY_ADOPTED_V1.md"
-  );
-  add(
-    "trust permission matrix doc",
-    fs.existsSync(path.resolve(__dirname, "../../../TRUST_PERMISSION_MATRIX_V1.md")),
-    "TRUST_PERMISSION_MATRIX_V1.md"
+    "environment doc",
+    fs.existsSync(path.resolve(__dirname, "../../../docs/ENVIRONMENT.md")),
+    "docs/ENVIRONMENT.md"
   );
 
   let sdkPoseidonOk = false;
@@ -3768,7 +3717,7 @@ async function cmdDoctor() {
     JSON.stringify(
       {
         ok,
-        launchVerdict: "No-Go for mainnet until ceremony (see LAUNCH_STATUS_V1.md)",
+        launchVerdict: "No-Go for mainnet until ceremony, audit, and a published mainnet registry",
         checks,
       },
       null,

@@ -8,11 +8,7 @@ import { AssetPoolSelect } from "./AssetPoolSelect";
 import { NetworkSelect } from "./NetworkSelect";
 import { StatusToasts } from "./StatusToasts";
 import { PrivacyField } from "./PrivacyField";
-import {
-  HelpTip,
-  LabelWithHelp,
-  type FounderRemainingDoc,
-} from "./HelpTip";
+import { HelpTip, LabelWithHelp } from "./HelpTip";
 
 export type AppPage = "deposit" | "withdraw" | "recover" | "lab";
 
@@ -114,7 +110,7 @@ export type ProductUiProps = {
   onDisconnect: () => void;
   onCreateAndDownload: () => void;
   onImportNotes: (file: File) => void;
-  onImportRecoveryCode: (code: string) => void;
+  onImportRecoveryCode: (code: string) => void;
   recoveryPaste: string;
   onRecoveryPaste: (v: string) => void;
   backupArtifacts: SealedBackupArtifacts | null;
@@ -149,7 +145,7 @@ function RestoreNotesPanel(props: {
   recoveryPaste: string;
   onRecoveryPaste: (v: string) => void;
   onImportRecoveryCode: (code: string) => void;
-  onImportNotes: (file: File) => void;
+  onImportNotes: (file: File) => void;
   title?: string;
   subtitle?: string;
   folded?: boolean;
@@ -418,73 +414,6 @@ function PoolBar(props: ProductUiProps) {
         </span>
       </div>
     </div>
-  );
-}
-
-function FounderRemainingPanel() {
-  const [doc, setDoc] = useState<FounderRemainingDoc | null>(null);
-  const [err, setErr] = useState<string | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/founder-remaining.json")
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((j) => {
-        if (!cancelled) setDoc(j as FounderRemainingDoc);
-      })
-      .catch((e) => {
-        if (!cancelled) setErr(String(e?.message || e));
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return (
-    <details className="fold-panel">
-      <summary
-        onClick={(e) => {
-          if ((e.target as HTMLElement).closest(".help-tip")) e.preventDefault();
-        }}
-      >
-        <span className="fold-panel-text">
-          <span className="fold-panel-title">
-            What&apos;s left (founder) <HelpTip tipKey="founderRemaining" />
-          </span>
-          <span className="fold-panel-hint">
-            Ceremony, audit, and other work still outside this app.
-          </span>
-        </span>
-        <span className="fold-panel-mark" aria-hidden />
-      </summary>
-      <div className="fold-panel-body">
-      {err ? <p className="meta">Could not load checklist: {err}</p> : null}
-      {doc ? (
-        <>
-          <p className="meta">{doc.intro}</p>
-          <ul className="founder-list">
-            {doc.items.map((item) => (
-              <li key={item.id}>
-                <div className="founder-item-title">
-                  <strong>{item.title}</strong>
-                  <HelpTip text={item.summary} label={item.title} />
-                </div>
-                <span className="meta">
-                  When: {item.when} · Owner:{" "}
-                  {item.owner === "you" ? "you (manual)" : "optional help"}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : !err ? (
-        <p className="meta">Loading…</p>
-      ) : null}
-      </div>
-    </details>
   );
 }
 
@@ -757,7 +686,7 @@ export function ProductShell(props: ProductUiProps) {
               recoveryPaste={props.recoveryPaste}
               onRecoveryPaste={props.onRecoveryPaste}
               onImportRecoveryCode={props.onImportRecoveryCode}
-              onImportNotes={props.onImportNotes}
+              onImportNotes={props.onImportNotes}
               title="Already have a note?"
               subtitle="Paste a Recovery Code to bring it back. File upload is optional."
               folded
@@ -784,7 +713,7 @@ export function ProductShell(props: ProductUiProps) {
                 recoveryPaste={props.recoveryPaste}
                 onRecoveryPaste={props.onRecoveryPaste}
                 onImportRecoveryCode={props.onImportRecoveryCode}
-                onImportNotes={props.onImportNotes}
+                onImportNotes={props.onImportNotes}
                 title="Import note to withdraw"
                 subtitle="Paste a Recovery Code if this tab is empty. File upload is optional."
                 folded
@@ -970,7 +899,7 @@ export function ProductShell(props: ProductUiProps) {
                 recoveryPaste={props.recoveryPaste}
                 onRecoveryPaste={props.onRecoveryPaste}
                 onImportRecoveryCode={props.onImportRecoveryCode}
-                onImportNotes={props.onImportNotes}
+                onImportNotes={props.onImportNotes}
               />
 
               <details className="fold-panel">
@@ -1091,7 +1020,6 @@ export function ProductShell(props: ProductUiProps) {
               </p>
             </div>
             <div className="stack flow-stack">
-              <FounderRemainingPanel />
               <div className="actions">
                 <button
                   className="btn"

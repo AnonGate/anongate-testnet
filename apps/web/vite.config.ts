@@ -18,7 +18,6 @@ export default defineConfig({
     },
   },
   server: {
-    // 5180 so it can run side-by-side with the AnonSwap frontend (5173)
     port: 5180,
     // Listen on all interfaces so LAN devices can open http://<this-pc-ip>:5180/
     host: true,

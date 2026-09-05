@@ -1,18 +1,12 @@
-# SDK Core
+# SDK core
 
-Shared local-first logic for Absolute Privacy clients.
+Shared local-first logic for the web UI, CLI, and Python bridge.
 
-## Planned modules
-- note creation
-- commitment derivation
-- nullifier derivation
-- encrypted backup export/import
-- public state reconstruction helpers
+Includes note creation, commitments, nullifiers, Merkle helpers, encrypted backup, and privacy-warning helpers.
 
-## Status
-Scaffold only.
+Rules: no server-side private state, no operator recovery. Chain public state plus local secrets only.
 
-Rules:
-- no server-side private state
-- no operator recovery path
-- chain public state + local secrets only
+```bash
+npm install
+npm run build
+```

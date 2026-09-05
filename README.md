@@ -1,120 +1,89 @@
-# Absolute Privacy
+# AnonGate — Absolute Privacy
 
-`Absolute Privacy` is a privacy-first, non-custodial shielded pool (WETH/ETH, DAI, LUSD — separate pools) concept and implementation scaffold.
+Experimental **Sepolia** shielded pools for ETH, DAI, and LUSD. Non-custodial: the contracts cannot spend your notes, and this repository does not host user secrets.
 
-## License and source
+**This is a testnet. It is not audited. Do not use real mainnet funds.** Ethereum mainnet clients are blocked until a separate production deployment exists.
 
-Absolute Privacy is open-source software licensed under the
-[GNU Affero General Public License v3.0 only](LICENSE) (`AGPL-3.0-only`).
-Files that carry their own SPDX notice, generated verifier output, artifacts,
-and vendored dependencies remain under their stated licenses.
+## What it is
 
-The repository contains the preferred source for the contracts, circuits,
-SDK, CLI, and optional UI, plus the scripts needed to build and self-host
-them. No operator-hosted application backend is required: clients can use an
-Ethereum JSON-RPC endpoint directly, and the RPC and UI are optional,
-replaceable components. The `"private": true` fields in workspace
-`package.json` files only prevent accidental npm publication; they do not
-make the source proprietary or restrict the AGPL permissions.
+Each asset has its own pool (depth-20 Merkle tree). You deposit, keep a Recovery Code locally, then withdraw to a public address. There is no in-pool transfer path. Silent send is optional: a local relayer broadcasts a withdraw you already proved in the client.
 
-If an operator runs a modified version for users over a network, AGPL section
-13 requires that operator to offer those users the complete Corresponding
-Source of the version actually running, at no charge, through a standard or
-customary download method. An operator should expose a prominent **Source**
-link in its network UI or service documentation that identifies the exact
-revision and includes all build, install, and run scripts. This repository
-does not claim that an unrelated deployment's source offer is complete.
+On-chain, recipient and amount are public. The protocol does **not** claim complete unlinkability.
 
-## Decentralization and privacy boundaries
+Live Sepolia addresses are in [`deployments/pools.sepolia.json`](deployments/pools.sepolia.json). Pools are Etherscan-verified. Poseidon is deployed bytecode and is not explorer-verifiable.
 
-- A deployed `ShieldedPool` has no owner/admin role or upgrade path. Its
-  asset, verifiers, fee rates, tree depth, and ops fee recipient are immutable.
-- The immutable ops fee recipient can withdraw only the separately accounted
-  ops-fee balance; it cannot spend shielded user principal or notes.
-- No official UI or RPC is required. A chosen UI or RPC operator can still
-  refuse requests, censor access, log IP addresses, and observe public
-  transaction metadata. It cannot spend a user's funds without the user's
-  note secrets and a valid proof.
-- Note secrets, witnesses, backups, and proving remain local in the supplied
-  clients. That design is not a guarantee that every fork, browser extension,
-  RPC, or replacement UI behaves safely.
-- Browser storage is a plaintext-secret risk when the vault is unlocked.
-  Compromised pages, extensions, devices, clipboard history, or backups can
-  expose spendable note material. Prefer the CLI or another auditable local
-  client for stronger secret isolation.
-- The production depth-20 circuits still require a completed, reviewed
-  multi-party ceremony before mainnet. Existing `*_dev` and trusted-local
-  artifacts are experimental and are not ceremony-secured production keys.
+## Repository layout
 
-## Sepolia explorer and source-verification checklist
+| Path | Role |
+| --- | --- |
+| `packages/contracts` | `ShieldedPool`, Groth16 verifiers, Foundry tests |
+| `packages/circuits` | Circom circuits and proving-key layout |
+| `packages/sdk-core` | Notes, Merkle helpers, backups |
+| `packages/cli` | Reference CLI (`ap`) |
+| `packages/python-client` | Same flows via the Node CLI |
+| `packages/relayer` | Optional local Silent-send relayer |
+| `apps/web` | Optional browser UI (port **5180**) |
+| `deployments/` | Published Sepolia registry (no private keys) |
 
-The addresses in `deployments/sepolia.json` and
-`deployments/pools.sepolia.json` describe an experimental Sepolia deployment.
-Direct RPC runtime checks are not the same as explorer source verification,
-and this project does **not** claim that those addresses currently show
-verified source on an explorer.
+## Can you run this after a clone?
 
-For each pool, asset, Poseidon contract, raw verifier, and verifier adapter:
+Yes, for reading the code, running contract tests, and opening the UI.
 
-1. Open the address on a Sepolia explorer and confirm chain ID `11155111`.
-2. Match the address and creation transaction against
-   `deployments/pools.sepolia.json`; do not rely on names or search results.
-3. Check whether the explorer explicitly reports source verification. Record
-   “unverified” when it does not; do not infer verification from an ABI tab.
-4. If verifying, use the exact compiler, optimizer, `via_ir`, source files,
-   constructor arguments, and linked-library settings from the deployment
-   artifacts and `packages/contracts/foundry.toml`.
-5. Compare the explorer's deployed runtime bytecode with direct RPC
-   `eth_getCode` and the local build output. Account for Solidity metadata
-   before interpreting a mismatch.
-6. Read immutable pool values on-chain (asset, verifiers, fee rates, tree
-   depth, and ops fee recipient) and compare them with the registry.
-7. Confirm the pool implementation has no owner/admin or upgrade mechanism
-   and that `withdrawOpsFees` is bounded by separately tracked ops fees.
-8. Save explorer URLs, verification status, compiler inputs, bytecode hashes,
-   and the exact repository revision as review evidence. Verification is only
-   complete after these checks succeed; this checklist performs no external
-   submission.
+Proving (deposit / withdraw) needs Groth16 `.zkey` / `.wasm` files. Those artifacts are **not** in git (size). Place ceremony finals under `packages/circuits/ceremony/finals/` or trusted-local keys under `packages/circuits/keys/local-trusted/`. Without them, `npm run dev` in the web app will fail at circuit sync / prove.
 
-## Product in one line
-One chain, three asset pools (WETH/ETH, DAI, LUSD), note-based spending, no admin fund powers, optional open clients. Same asset in/out only — `MULTI_ASSET_POOLS_V1.md`.
+No `.env` is required to browse the UI. A relayer `.env` is required only for Silent send. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
-## Current stage
-1. Design docs: mature
-2. Executable design: done
-3. Cryptography: Poseidon + Circom + Groth16
-4. SDK Poseidon + Merkle helpers: working
-5. Circom `*_dev` (depth 4): compile + setup + real-proof Foundry integration (test fixtures; obsolete for deployment)
-6. Circom production circuits (depth 20): compiled; Sepolia pools live with Phase-2 ceremony keys
-7. CLI (JS): notes, public-state sync, ceremony-aware proving (`withdraw-1-dev` / `withdraw-partial-dev`), call builders, native ETH broadcast, backup, nullifier scan, Sepolia registry (`eth` / `dai` / `lusd`)
-8. Python client: same protocol path via local Node CLI bridge (deposit, withdraw1 / merge / partial, Recovery Code)
-9. Depth-20 trusted-local keys/verifiers + Foundry integration (`8/8` tests)
-10. Ceremony requirements + ops runbook: `CEREMONY_REQUIREMENTS_V1.md`, `CEREMONY_OPS_RUNBOOK_V1.md` (MPC still blocked for mainnet)
-11. Web UI (`apps/web`): Sepolia pools, mint lab, deposit, full/partial/merge withdraw, transfer, note ops UI, client-only proving (see `PROTOCOL_REDESIGN_TESTNET_V2.md`)
-12. Local anvil deploy script: `packages/contracts/script/DeployLocalDev.s.sol`
-13. Local E2E smoke (real `*_dev` proofs): `npm run smoke:e2e` / `npm run smoke:e2e:pay`
-14. Artifact hash helper: `packages/circuits/scripts/hash_ceremony_artifacts.mjs`
-15. Ceremony preflight: `ap ceremony status` / `npm run ceremony:preflight` (`CEREMONY_COORDINATOR_BRIEF_V1.md`)
-16. Root convenience scripts: `package.json` (`build:sdk`, `smoke:e2e`, `ceremony:hash`, `doctor`, …)
-17. Launch evidence matrix: `LAUNCH_STATUS_V1.md` (**No-Go** for mainnet)
-18. Privacy-health thresholds + amount warnings: `PRIVACY_HEALTH_THRESHOLDS_V1.md` + sdk-core helpers
-19. MVP rewards omission: `MVP_REWARDS_SCOPE_V1.md` (`claimRewards` stays unimplemented)
-20. Selective disclosure + sealed export: `SELECTIVE_DISCLOSURE_MVP_V1.md`
-21. Trust permission matrix: `TRUST_PERMISSION_MATRIX_V1.md`
-22. Mainnet client gate (refuse known chainIds without ceremony override)
-23. Claims lint + recovery walkthrough + cross-client commitment vector
-24. `PUBLIC_ABI_REFERENCE_V1.md` + `CONTRIBUTING.md` + `npm run gate:dev` / `ap drill backup`
+## Quick start
 
-## Document map (start here)
-- `PROTOCOL_REDESIGN_TESTNET_V2.md` — Sepolia redesign (1-in withdraw, partial + change)
-- `CONTRIBUTING.md` — local setup
-- `PUBLIC_ABI_REFERENCE_V1.md` — contract access without UI
-- `WITHDRAW_TIMING_POLICY_V1.md` — no forced withdraw delay by default
-- `FOUNDER_MAINNET_MANUAL_V1.md` — human steps only for mainnet
-- `LAUNCH_STATUS_V1.md` — Go / No-Go
+Node.js 20+ is required.
 
-## Next implementation step
-1. Founder manual (human steps only): `FOUNDER_MAINNET_MANUAL_V1.md`
-2. Check gates: `ap launch readiness`
-3. Sepolia dry-run optional: `SEPOLIA_EXPERIMENTAL_RUNBOOK_V1.md`
-4. Ceremony → export → mainnet: Gate C in `PRODUCTION_READINESS_V1.md`
+```bash
+npm install --prefix packages/sdk-core && npm run build --prefix packages/sdk-core
+npm install --prefix packages/cli
+npm install --prefix apps/web
+npm run dev --prefix apps/web
+```
+
+Open [http://127.0.0.1:5180/](http://127.0.0.1:5180/). Switch MetaMask to Sepolia. ETH has no mint; tDAI / tLUSD mint from **Get tokens** in the footer.
+
+Silent send (optional):
+
+```bash
+cp packages/relayer/.env.example packages/relayer/.env
+# set RELAYER_PRIVATE_KEY to a dedicated Sepolia key with a little ETH
+npm install --prefix packages/relayer
+npm start --prefix packages/relayer
+```
+
+Health check: [http://127.0.0.1:8787/health](http://127.0.0.1:8787/health)
+
+CLI (from `packages/cli`):
+
+```bash
+node ./bin/ap.mjs sepolia status --asset eth --rpc
+```
+
+Contract tests (Foundry):
+
+```bash
+cd packages/contracts && forge test
+```
+
+## Fees (live Sepolia)
+
+- Deposit: **0.011%** (110 ppm)
+- Withdraw floor: **0.04%** (400 ppm). Silent send must be strictly above that floor.
+
+100% of protocol fees go to the published fee recipient in the same transaction.
+
+## Documentation
+
+- [How to test on Sepolia](docs/SEPOLIA.md)
+- [Protocol overview](docs/PROTOCOL.md)
+- [Environment files](docs/ENVIRONMENT.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
+
+## License
+
+[AGPL-3.0-only](LICENSE).

@@ -1,29 +1,24 @@
-# Local withdraw relayer (Sepolia experimental)
+# Silent-send relayer
 
-Broadcasts **client-built withdraw calldata** so users can withdraw without connecting a wallet.
+Local helper that broadcasts **already-built withdraw calldata** so the user does not submit from their wallet.
 
-## Privacy rules (non-negotiable)
+## Rules
 
-- Prove in the browser; **never** POST spend notes, spending keys, or secrets here.
+- Prove in the client. Never POST notes, spending keys, or Recovery Codes.
 - API accepts only `{ chainId, to, data }`.
-- Default bind: `127.0.0.1` (loopback). Logs do not print calldata or client IPs.
-- On-chain withdraw fields (recipient, amount, nullifier) are public by design — same as a self-broadcast withdraw.
+- Default bind: `127.0.0.1:8787`.
+
+On-chain withdraw fields (recipient, amount, nullifier) stay public — same as a self-broadcast withdraw.
 
 ## Setup
 
-```powershell
-cd "D:\Absolute privacy\packages\relayer"
+```bash
+cp .env.example .env
+# set RELAYER_PRIVATE_KEY to a dedicated Sepolia key with a little ETH
 npm install
-copy .env.example .env
-# Edit .env: set RELAYER_PRIVATE_KEY to a dedicated Sepolia test key with a little ETH
 npm start
 ```
 
-Check: open `http://127.0.0.1:8787/health`
+Check [http://127.0.0.1:8787/health](http://127.0.0.1:8787/health).
 
-Fund that address with Sepolia ETH for gas.
-
-## Web
-
-In `apps/web`, after Prove withdraw, use **Silent send (relayer)** — no MetaMask confirm.
-Default relayer URL: `http://127.0.0.1:8787` (override with `VITE_RELAYER_URL`).
+In the web app, after Prove withdraw, use **Silent send**. Override URL with `VITE_RELAYER_URL` if needed.

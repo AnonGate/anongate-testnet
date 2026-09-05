@@ -1,74 +1,61 @@
 # Contributing
 
-Absolute Privacy is a non-custodial multi-asset shielded pool monorepo (WETH/DAI/LUSD — separate pools).
-Local/dev work is welcome. **Mainnet is No-Go** until a real multi-party Phase 2 ceremony completes.
+This repository is the Sepolia testnet implementation of AnonGate Absolute Privacy.
 
 ## Prerequisites
-- Node.js 20+
-- Python 3.11+ (for `packages/python-client`)
-- Foundry (`forge` / `anvil` / `cast`) — typically `%USERPROFILE%\.foundry\bin`
-- Circom 2.x for circuit rebuilds — optional unless you change circuits
 
-## First-time setup
+- Node.js 20 or newer
+- Python 3.11+ only if you use `packages/python-client`
+- Foundry (`forge`) only if you change or test contracts
+- Circom 2.x only if you rebuild circuits
+
+## Setup
+
 ```bash
-npm run build:sdk
+npm install --prefix packages/sdk-core && npm run build --prefix packages/sdk-core
 npm install --prefix packages/cli
 npm install --prefix packages/circuits
+npm install --prefix packages/relayer
 npm install --prefix apps/web
-npm install --prefix packages/contracts   # if present
 ```
 
-## Local readiness gate (run before opening a PR)
+Copy env templates; never commit the copies. See [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
+
+## Checks
+
 ```bash
-npm run gate:dev
+npm run test:contracts          # Foundry (if installed)
+npm run test:vector             # JS + Python commitment vector
+npm run gate:dev                # local readiness scripts
 ```
 
-This runs:
-1. `ap doctor`
-2. `ap claims lint`
-3. `npm run test:vector`
-4. `ap drill backup`
-5. `ap drill ownership`
-6. `ap drill recipient`
-7. `ap drill view`
-8. `ap drill value-bound`
-9. `ap launch status`
-10. `ap memo status` (must report `implemented: false`)
-11. `ap ceremony status` (preflight tooling; Phase 2 still not started)
-12. `npm run ceremony:hash` (fingerprints local artifacts only)
+Web unit checks (from `apps/web`):
 
-Optional heavier checks:
 ```bash
-npm run test:contracts
-npm run smoke:e2e
-npm run smoke:e2e:pay
+npm run test:abi
+npm run test:guide
+npm run test:storage
+npm run test:notice
+npm run test:error
+npm run test:fees
 ```
 
-## Rules of engagement
-- Do **not** market `*_trusted` as ceremony keys.
-- Do **not** add hosted proving or note-upload backends.
-- Do **not** expose a live “Claim rewards” path (`RewardsNotImplemented`).
-- Do **not** claim on-chain encrypted memo / chain-scan; adopted delivery is offline OOB (`NOTE_DELIVERY_ADOPTED_V1.md`, `ap memo status`).
-- Prefer under-claiming privacy; run `ap claims lint` after copy changes.
-- Keep secrets local: notes, spending keys, backup passphrases, disclosure recipient private keys.
+## Rules
 
-## Where to work
+- Do not commit `.env`, notes, Recovery Codes, wallets, proofs, or `.zkey` / `.wasm` artifacts.
+- Do not add a hosted proving backend or note-upload server.
+- Do not market this as audited or mainnet-ready.
+- Prefer under-claiming privacy. Recipient and amount are public on withdraw.
+- Product copy and filenames stay English.
+
+## Layout
+
 | Area | Path |
-|---|---|
+| --- | --- |
 | SDK | `packages/sdk-core` |
 | CLI | `packages/cli` |
 | Python | `packages/python-client` |
-| Web (optional) | `apps/web` |
+| Web | `apps/web` |
+| Relayer | `packages/relayer` |
 | Contracts | `packages/contracts` |
 | Circuits | `packages/circuits` |
-
-## Ceremony
-Practice tooling only:
-```bash
-npm run ceremony:checklist
-npm run ceremony:practice -- --circuit withdraw --name alice
-```
-Real MPC coordination: `CEREMONY_OPS_RUNBOOK_V1.md`.
-
-## Recovery
-User-driven restore: `RECOVERY_WALKTHROUGH_V1.md`.

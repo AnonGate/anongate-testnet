@@ -4,7 +4,7 @@
   "chainId": 11155111,
   "network": "sepolia",
   "status": "deployed-experimental-native-eth",
-  "policy": "MULTI_ASSET_POOLS_V1.md",
+  "policy": "See docs/PROTOCOL.md",
   "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
   "deployer": "0xa1cEFcd8F0f72684c251c3f352E8D13Dd1256d03",
   "warning": "ETH is native network currency. tDAI/tLUSD are experimental permissionless-mint tokens with no backing.",
