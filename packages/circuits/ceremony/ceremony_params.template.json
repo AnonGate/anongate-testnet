@@ -1,0 +1,16 @@
+{
+  "format": "absolute-privacy-ceremony-params",
+  "version": 1,
+  "status": "draft",
+  "warning": "Copy to ceremony_params.json and fill before public recruitment. draft ≠ ceremony started.",
+  "projectName": "Absolute Privacy",
+  "circuits": ["deposit", "withdraw", "withdraw_1in", "withdraw_partial"],
+  "depth": 20,
+  "minContributors": 5,
+  "coordinatorContact": "TBD — e.g. GitHub discussion URL, email, or Telegram",
+  "attestationPublishWhere": "TBD — e.g. public GitHub issue / gist / forum thread",
+  "windowStart": null,
+  "windowEnd": null,
+  "frozenGitCommit": null,
+  "notes": "Set status to recruiting only after preflight freeze is published and contact fields are real."
+}

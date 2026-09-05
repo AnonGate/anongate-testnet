@@ -1,0 +1,36 @@
+﻿{
+    "status":  "deployed-experimental-unlinkability-v1",
+    "note":  "Withdraw leaf indices are private ZK witnesses; publicFeeData is fee-only. Fresh deposits required.",
+    "previousPools":  {
+                          "eth":  "0x486F5211DA1545e1f86b3cF6C1c823e24fAc3459",
+                          "dai":  "0x09AFA4D9B96479Fed95F832125AA9844B0C83220",
+                          "lusd":  "0x34181aB21A8a8A79bCbC87d57603890dEE82Dd0E"
+                      },
+    "shared":  {
+                   "opsFeeRecipient":  "0x84e57e85EFe449c0D53dc1ee773DDcD251D2fc5E",
+                   "poseidon":  "0x445a87927c731b741e349d917108e5f6d0b0c24b",
+                   "depositVerifier":  "0x99a29685D75483f50d7296d72Fe021517e2c0dc9",
+                   "withdrawRawVerifier":  "0x873DB9Aa3a7d38C6dE6997e653fAeD3362197038",
+                   "withdrawVerifier":  "0x08021243De9EbB128C30992CcEe8c0e39B400d3C",
+                   "withdraw1RawVerifier":  "0x45fA61BBd54b06aA3E055312c7Cc7051a051628F",
+                   "withdraw1Verifier":  "0x934C898Fa321660D77008Fc3DCFf3D6AB4Ea5B45",
+                   "withdrawPartialRawVerifier":  "0x2483e53616cF35B48605F8c543F163273c0Db89C",
+                   "withdrawPartialVerifier":  "0xD3DB07086eB1eCab05524A1d2d1Eee54aeAe457F",
+                   "gasRebateWei":  "800000000000000",
+                   "tokenRebateAmount":  "0"
+               },
+    "pools":  {
+                  "eth":  {
+                              "pool":  "0xC2FBbEe4297AA5CD73DF90b2a5881C2d92e00Ff9",
+                              "asset":  "0x0000000000000000000000000000000000000000"
+                          },
+                  "dai":  {
+                              "pool":  "0x16A18A6f49fC911a0f9d9210599E27c5f54F15df",
+                              "asset":  "0x322c94Da70896A075136809eE54c73b06faE2c50"
+                          },
+                  "lusd":  {
+                               "pool":  "0xe97e961F74940e7537a1b367E751918F85be057F",
+                               "asset":  "0x1fF7421311e54551401Cb90586913256FF496a87"
+                           }
+              }
+}

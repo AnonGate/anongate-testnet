@@ -1,0 +1,38 @@
+{
+  "name": "@absolute-privacy/web",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:circuits": "node ./scripts/sync-circuits.mjs",
+    "dev": "npm run sync:circuits && vite",
+    "build": "npm run sync:circuits && tsc -b && vite build",
+    "preview": "vite preview",
+    "test:abi": "node --experimental-strip-types --test ./scripts/abi.test.mjs",
+    "test:guide": "node --experimental-strip-types --test ./scripts/guideLogic.test.mjs",
+    "test:storage": "node --experimental-strip-types --test ./scripts/storagePolicy.test.mjs",
+    "test:notice": "node --experimental-strip-types --test ./scripts/userNotice.test.mjs",
+    "test:error": "node --experimental-strip-types --test ./scripts/formatUserError.test.mjs",
+    "test:fees": "node --experimental-strip-types --test ./scripts/fees.test.mjs"
+  },
+  "dependencies": {
+    "@absolute-privacy/sdk-core": "file:../../packages/sdk-core",
+    "@noble/hashes": "^1.8.0",
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "process": "^0.11.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "snarkjs": "^0.7.6",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.0"
+  }
+}

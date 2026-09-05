@@ -1,0 +1,22 @@
+{
+  "format": "absolute-privacy-test-vector",
+  "version": 1,
+  "note": "Deterministic note fields for cross-client commitment parity. Not a spending key for any real pool.",
+  "poseidon": "circomlibjs / matching Python poseidon",
+  "preimage": {
+    "version": "1",
+    "assetId": "1",
+    "value": "1000000",
+    "spendingKey": "1111111111111111111111111111111111111111111111111111111111111111",
+    "nullifierKey": "2222222222222222222222222222222222222222222222222222222222222222",
+    "blinding": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "expected": {
+    "commitment": "11521730273456626019800387608916919979924212619240478021433172455864557823103",
+    "nullifierLeaf0": "5532701886182717340665301692831911295355407524321371107961941945533864739273",
+    "viewKey": "14093182473138302156652498869565928190526009670142456404757215874391635074961",
+    "attestationDigestValueBoundSample": "0xbf06117a5401f2037b3fac2102a620290db0e2aeaff6c03de0f2408119c2e321"
+  },
+  "howto": "Run packages/sdk-core/scripts/generate_test_vector.mjs to fill expected.*, then verify with verify_test_vector in JS + Python.",
+  "generatedAt": "2026-07-28T18:38:45.302Z"
+}

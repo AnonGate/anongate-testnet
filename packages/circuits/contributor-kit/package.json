@@ -1,0 +1,10 @@
+{
+  "name": "anongate-ceremony-contributor-kit",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Phase-2 contribution kit for AnonGate / Absolute Privacy (four product circuits).",
+  "dependencies": {
+    "snarkjs": "^0.7.6"
+  }
+}

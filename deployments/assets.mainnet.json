@@ -1,0 +1,39 @@
+{
+  "format": "absolute-privacy-assets",
+  "version": 1,
+  "chainId": 1,
+  "network": "ethereum-mainnet",
+  "policy": "MULTI_ASSET_POOLS_V1.md — one ShieldedPool per asset; no cross-asset redeem",
+  "assets": [
+    {
+      "id": "weth",
+      "symbol": "WETH",
+      "displaySymbol": "ETH",
+      "decimals": 18,
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "kind": "wrapped-native",
+      "withdrawSameAssetOnly": true,
+      "notes": "Use WETH in the pool. Clients may wrap/unwrap ETH in UX."
+    },
+    {
+      "id": "dai",
+      "symbol": "DAI",
+      "displaySymbol": "DAI",
+      "decimals": 18,
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "kind": "stablecoin",
+      "withdrawSameAssetOnly": true,
+      "notes": "No Circle blacklist; governance risk remains."
+    },
+    {
+      "id": "lusd",
+      "symbol": "LUSD",
+      "displaySymbol": "LUSD",
+      "decimals": 18,
+      "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+      "kind": "stablecoin",
+      "withdrawSameAssetOnly": true,
+      "notes": "No admin freeze design; thinner liquidity than DAI."
+    }
+  ]
+}

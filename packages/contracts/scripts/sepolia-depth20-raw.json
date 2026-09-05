@@ -1,0 +1,145 @@
+{
+  "format": "absolute-privacy-pools",
+  "version": 9,
+  "chainId": 11155111,
+  "network": "sepolia",
+  "status": "deployed-depth20-fee-push-v1",
+  "warning": "Depth-20 pools with LOCAL TRUSTED Groth16 keys (not multi-party ceremony). Fees: 0.011% in / 0.04% out, 100% pushed to feeRecipient. Do not treat as Mainnet-ready.",
+  "policy": "MULTI_ASSET_POOLS_V1.md / PROTOCOL_REDESIGN_TESTNET_V2.md",
+  "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "deployer": "0xa1cEFcd8F0f72684c251c3f352E8D13Dd1256d03",
+  "shared": {
+    "poseidon": "0x445a87927c731b741e349d917108e5f6d0b0c24b",
+    "depositRawVerifier": "0x78F165CB8258e52ab73Bdfa39107973C0F7FCA31",
+    "depositVerifier": "0x7991980b5727384Ab108A0E093E17D92771C1997",
+    "withdrawRawVerifier": "0x74277Ddc07Bd742ecf09A14A330A6f1b660ebEA8",
+    "withdrawVerifier": "0xEf4Bb0A49A24337FE376b56B3777A4FE093935a1",
+    "withdraw1RawVerifier": "0x35C41a6EB2585Be31728c408E0CeFf34e119EFb2",
+    "withdraw1Verifier": "0x379a2512E2E77050D9A3e95c1c797a67e0Bd3a90",
+    "withdrawPartialRawVerifier": "0x078422C7573c6E845CeB090b214e9Bb585A7D163",
+    "withdrawPartialVerifier": "0x9b1119D1A92d8E80469d274a578048F2CAE55363",
+    "opsFeeRecipient": "0x84e57e85EFe449c0D53dc1ee773DDcD251D2fc5E",
+    "amountBits": 128,
+    "amountBitsNote": "Num2Bits/LessEqThan width for value/amount/fee. Max ~3.4e20 tokens at 18 decimals.",
+    "treeDepth": 20,
+    "rootHistorySize": 64,
+    "feesPpm": {
+      "deposit": 110,
+      "transfer": 0,
+      "withdraw": 400
+    },
+    "rewardSharesBps": {
+      "liquidity": 0,
+      "ops": 0,
+      "reserve": 0
+    },
+    "gasRebateWei": "0",
+    "tokenRebateAmount": "0",
+    "gasRebateNote": "Disabled. 100% of protocol fees (and silent extra) are pushed to feeRecipient in the same tx.",
+    "nativeEth": true,
+    "nativeEthNote": "Registry key `eth` is native Sepolia ETH (asset address zero). DAI/LUSD remain permissionless-mint ERC-20 test tokens.",
+    "transferRemoved": true,
+    "transferFeeBps": 0,
+    "transferNote": "ShieldedPool.transfer and transferVerifier removed. Product spend path is withdraw only.",
+    "unlinkability": {
+      "spentLeafIndicesPublic": false,
+      "publicFeeData": "abi.encode(uint256 fee)",
+      "circuitRevisionWithdraw": 3,
+      "claim": "On-chain observers cannot cryptographically bind a spend to a deposit leaf index. Complete unlinkability is NOT claimed."
+    },
+    "provingKeys": "local-trusted",
+    "ceremonyStatus": "pending-replacement",
+    "ceremonyNote": "Replace packages/circuits/ceremony/finals/* and redeploy verifiers when Phase-2 MPC completes. Pool logic unchanged.",
+    "feeRecipient": "0x84e57e85EFe449c0D53dc1ee773DDcD251D2fc5E",
+    "feesPpm": {
+      "deposit": 110,
+      "transfer": 0,
+      "withdraw": 400
+    }
+  },
+  "pools": {
+    "eth": {
+      "pool": "0x90D37a7080B6c8da2Cf1BF21d0a2fD8978fc1C2b",
+      "assetId": "eth",
+      "asset": "0x0000000000000000000000000000000000000000",
+      "assetSymbol": "ETH",
+      "assetDecimals": 18,
+      "assetSource": "native",
+      "native": true,
+      "treeDepth": 20
+    },
+    "dai": {
+      "pool": "0x2d55DcF620a79b5A147DF0144680E05717F46621",
+      "assetId": "dai",
+      "asset": "0x322c94Da70896A075136809eE54c73b06faE2c50",
+      "assetSymbol": "tDAI",
+      "assetDecimals": 18,
+      "assetSource": "reused-test-token",
+      "treeDepth": 20
+    },
+    "lusd": {
+      "pool": "0xe8556a19cde9093eb9782f3Ea31D880A0411b05f",
+      "assetId": "lusd",
+      "asset": "0x1fF7421311e54551401Cb90586913256FF496a87",
+      "assetSymbol": "tLUSD",
+      "assetDecimals": 18,
+      "assetSource": "reused-test-token",
+      "treeDepth": 20
+    }
+  },
+  "deployment": {
+    "redesign": "PROTOCOL_REDESIGN_TESTNET_V2.md",
+    "amountBits": 128,
+    "rawArtifact": "packages/contracts/scripts/sepolia-depth20-raw.json",
+    "gasRebate": false,
+    "nativeEth": true,
+    "transferRemoved": true,
+    "unlinkability": true,
+    "treeDepth": 20,
+    "localTrustedKeys": true,
+    "ceremonyComplete": false,
+    "deployedAt": "2026-08-20T04:29:00.798Z",
+    "deployer": "0xa1cEFcd8F0f72684c251c3f352E8D13Dd1256d03",
+    "feePush": true
+  },
+  "obsoletePools": {
+    "note": "Pools that still exposed shielded transfer — do not use",
+    "redesignV2": {
+      "weth": "0x0d7909Ba3B9cB855e1Cb0F270B604066dC139fEe",
+      "dai": "0xe09d8972E2297b9b78A213FCe00Aff89C3B90c2C",
+      "lusd": "0x8fe949768c00266F4E0EEBa39BBDE9B4424170f0"
+    },
+    "amountBits128": {
+      "weth": "0x3CA0943dD9D4fA2065F944B47B7Ba838C506754a",
+      "dai": "0xa9354b67487556BFFd87e03d916229298424F88C",
+      "lusd": "0xd2Ded28D65dA9476454A3867623918298A0EE0EE"
+    },
+    "gasRebateTweth": {
+      "weth": "0x32C9144F1da8Df271fb6549d917460179c8Fb04A"
+    },
+    "withTransfer": {
+      "eth": "0x1FE898A57E6E7C450cBCeE0be76C405Dd6ab24d5",
+      "dai": "0x7D95a7799F34aC9929292334045892e4a06Fd680",
+      "lusd": "0x6D9F9c3D942e87ad4Be24900c8e9b3252Ce8485A"
+    },
+    "preUnlinkability": {
+      "note": "Pools that published spent leaf indices on withdraw — do not use",
+      "eth": "0x486F5211DA1545e1f86b3cF6C1c823e24fAc3459",
+      "dai": "0x09AFA4D9B96479Fed95F832125AA9844B0C83220",
+      "lusd": "0x34181aB21A8a8A79bCbC87d57603890dEE82Dd0E"
+    },
+    "depth4Unlinkability": {
+      "note": "Depth-4 experimental unlinkability pools — do not use",
+      "eth": "0xC2FBbEe4297AA5CD73DF90b2a5881C2d92e00Ff9",
+      "dai": "0x16A18A6f49fC911a0f9d9210599E27c5f54F15df",
+      "lusd": "0xe97e961F74940e7537a1b367E751918F85be057F"
+    },
+    "feeSplitV8": {
+      "note": "0.08% in / 60-25-15 split pools — do not use for new notes",
+      "eth": "0x3d6d8Cc584C2eABbB3452B074ae6C059B08A513c",
+      "dai": "0x2cCa4AeB42623E91AbaD54b2926F2f1B3eCc361e",
+      "lusd": "0x3Fa8fFea40F84E71a53b93c81Dd9a49609FF2Fa2"
+    }
+  },
+  "notes": "Depth 20. Deposit 110 ppm (0.011%), withdraw floor 400 ppm (0.04%). 100% of fees pushed to feeRecipient. Silent send must pay more than the floor."
+}

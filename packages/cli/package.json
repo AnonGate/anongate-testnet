@@ -1,0 +1,24 @@
+{
+  "name": "@absolute-privacy/cli",
+  "version": "0.0.1",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "bin": {
+    "ap": "./bin/ap.mjs"
+  },
+  "scripts": {
+    "start": "node ./bin/ap.mjs",
+    "note:create": "node ./bin/ap.mjs note create",
+    "smoke:rpc": "node ./lib/ethRpc.smoke.mjs",
+    "smoke:e2e": "node ./scripts/local-e2e-smoke.mjs",
+    "smoke:e2e:delay": "node ./scripts/local-e2e-smoke-delay.mjs",
+    "smoke:e2e:pay": "node ./scripts/local-e2e-smoke-pay.mjs",
+    "verify:deployment": "node ./scripts/verify-deployment.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@absolute-privacy/sdk-core": "file:../sdk-core",
+    "@noble/hashes": "^1.8.0"
+  }
+}

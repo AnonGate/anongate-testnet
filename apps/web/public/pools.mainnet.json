@@ -1,0 +1,49 @@
+{
+  "format": "absolute-privacy-pools",
+  "version": 1,
+  "chainId": 1,
+  "network": "ethereum-mainnet",
+  "status": "blocked — ceremony required; addresses null until per-asset DeployMainnet",
+  "policy": "MULTI_ASSET_POOLS_V1.md",
+  "shared": {
+    "poseidon": null,
+    "depositVerifier": null,
+    "transferVerifier": null,
+    "withdrawVerifier": null,
+    "opsFeeRecipient": null,
+    "treeDepth": 20,
+    "rootHistorySize": 64,
+    "feesBps": {
+      "deposit": 8,
+      "transfer": 2,
+      "withdraw": 4
+    },
+    "rewardSharesBps": {
+      "liquidity": 6000,
+      "ops": 2500,
+      "reserve": 1500
+    }
+  },
+  "verification": {
+    "externalBytecodeReview": null,
+    "forbiddenVerifierRuntimeCodehashes": []
+  },
+  "pools": {
+    "weth": {
+      "pool": null,
+      "assetId": "weth",
+      "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    },
+    "dai": {
+      "pool": null,
+      "assetId": "dai",
+      "asset": "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+    },
+    "lusd": {
+      "pool": null,
+      "assetId": "lusd",
+      "asset": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0"
+    }
+  },
+  "notes": "Template only until deployment. After external bytecode review, set status=deployed-accepted, record its evidence URI in verification.externalBytecodeReview, and run ap launch verify-deployment. No cross-asset redeem."
+}

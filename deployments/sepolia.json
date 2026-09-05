@@ -1,0 +1,65 @@
+﻿{
+    "format":  "absolute-privacy-deployment",
+    "version":  2,
+    "chainId":  11155111,
+    "network":  "sepolia",
+    "status":  "deployed-experimental-redesign-v2",
+    "warning":  "Experimental redesign v2 (*_dev verifiers, withdraw1 + withdrawPartial1). Not mainnet or ceremony-secured.",
+    "policy":  "MULTI_ASSET_POOLS_V1.md / PROTOCOL_REDESIGN_TESTNET_V2.md",
+    "rpc":  "https://ethereum-sepolia-rpc.publicnode.com",
+    "deployer":  "0xa1cEFcd8F0f72684c251c3f352E8D13Dd1256d03",
+    "shared":  {
+                   "poseidon":  "0x792D1835626958fF8612d00709B2be0F689cDF77",
+                   "depositRawVerifier":  "0x437366C4C6ebD6d36018D4BE01F14bB93d1201E1",
+                   "depositVerifier":  "0xFE6212646088f01aD48838EeeF0307f16e336Cda",
+                   "transferRawVerifier":  "0x74f5Ec878E76500B5aFfB9C50B85d38BEE1aC2D6",
+                   "transferVerifier":  "0x6fbd1809A9fd18bEbA91Ae6eD0C77787a86b5144",
+                   "withdrawRawVerifier":  "0xaf93104672f6cA60bd10cc741bFb3B252a1A2599",
+                   "withdrawVerifier":  "0x8B33cb66Edf9D6058889e38Cf12b09DB5d67D8e4",
+                   "withdraw1RawVerifier":  "0x80B26195636fe02a7F6eF49C0fAf64b28589152C",
+                   "withdraw1Verifier":  "0x619418471F86776C220e5B3F3537DDBE527c0f2a",
+                   "withdrawPartialRawVerifier":  "0xc3542784c0843593Be02935852501856d0EC29f4",
+                   "withdrawPartialVerifier":  "0x215E73669E6cE171AcbfB5aDBA4efE75a6b1Ff76",
+                   "opsFeeRecipient":  "0x84e57e85EFe449c0D53dc1ee773DDcD251D2fc5E",
+                   "treeDepth":  4,
+                   "rootHistorySize":  64,
+                   "feesBps":  {
+                                   "deposit":  8,
+                                   "transfer":  2,
+                                   "withdraw":  4
+                               },
+                   "rewardSharesBps":  {
+                                           "liquidity":  6000,
+                                           "ops":  2500,
+                                           "reserve":  1500
+                                       }
+               },
+    "pools":  {
+                  "weth":  {
+                               "pool":  "0x0d7909Ba3B9cB855e1Cb0F270B604066dC139fEe",
+                               "asset":  "0xdf3472Cb19fe7017Cef542bBfC313eA4285ef5a1",
+                               "assetSymbol":  "tWETH",
+                               "assetDecimals":  18,
+                               "assetSource":  "reused-test-token"
+                           },
+                  "dai":  {
+                              "pool":  "0xe09d8972E2297b9b78A213FCe00Aff89C3B90c2C",
+                              "asset":  "0x322c94Da70896A075136809eE54c73b06faE2c50",
+                              "assetSymbol":  "tDAI",
+                              "assetDecimals":  18,
+                              "assetSource":  "reused-test-token"
+                          },
+                  "lusd":  {
+                               "pool":  "0x8fe949768c00266F4E0EEBa39BBDE9B4424170f0",
+                               "asset":  "0x1fF7421311e54551401Cb90586913256FF496a87",
+                               "assetSymbol":  "tLUSD",
+                               "assetDecimals":  18,
+                               "assetSource":  "reused-test-token"
+                           }
+              },
+    "deploymentBlock":  11396669,
+    "runtimeChecks":  "deployments/sepolia.runtime-checks.json",
+    "notes":  "Compatibility summary of redesign v2 in pools.sepolia.json. Pre-redesign v1 pools are obsolete.",
+    "obsolete":  true,
+    "obsoleteNote":  "Superseded by pools.sepolia.json depth-20 LOCAL TRUSTED deployment. Do not use."
+}

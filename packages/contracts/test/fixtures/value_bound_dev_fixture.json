@@ -1,0 +1,28 @@
+{
+  "warning": "LOCAL value_bound_dev fixture — not ceremony-grade",
+  "proofA": [
+    "0x07060f4b142bedcfb2034dcfc8d5b680e3ef98522ffc1abf860665369e85aead",
+    "0x0dd1bad9203016af1e0afa1d71199f0e8baf4338b68f89f89445e0ac635daec4"
+  ],
+  "proofB": [
+    [
+      "0x0d418998af7305db4ee8c7f3805b757d32fb7b892a308ca15f33dbf9a60c32c1",
+      "0x2178ce5ac5514d043f3fc8176e61c74426b1ab26efa347f495b567916b61124a"
+    ],
+    [
+      "0x1f41ec2a1c7fe7dbbc97878c251fd6199c54484442894d7c92f95cc23eee9dc7",
+      "0x1662c998835ae68b60684127e4df490edcf12314c4c955b8c754d7d00f4faf5a"
+    ]
+  ],
+  "proofC": [
+    "0x246f849c9890d5308735bcf54dffa5ab4cd2916f17fd1b52d93f715e78881376",
+    "0x0269f3ea30d5d97b5f9882fd6359a8a7ff0eb97c3606bfa357f69bfafd3490d1"
+  ],
+  "publicSignals": [
+    "4180461917031617015048341781695518186773361011848353605276679430262897046122",
+    "1",
+    "100000",
+    "1"
+  ],
+  "onchainDigest": "0xe11ec798aeecceae7d77623c3cca6953f981a7fbc065e2845eff8c3e28b26111"
+}

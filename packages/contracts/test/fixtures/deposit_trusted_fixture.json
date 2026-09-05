@@ -1,0 +1,31 @@
+{
+  "circuitRevision": 1,
+  "commitment": "1242264296625152800395229346494880167246803611298647770042547519035635177128",
+  "netValue": "1000000",
+  "grossAmount": "1000800",
+  "depositFeeBps": "8",
+  "depositFee": "800",
+  "proofA": [
+    "0x1be68b68524d9bbe9b5a4845a551a8b3c751353f893c8428d668bdeefbd34d3f",
+    "0x1fcd60216a9e28d18c1f950a0c89d8087ebfcc5a919b115a23a5e62e100be45f"
+  ],
+  "proofB": [
+    [
+      "0x239daca9c81de614b91d2433255ec94b9511c79bb2b654a7284c9a39e09e29fb",
+      "0x18ffea17d5f5fe2d689f9a52d41cc3db8f75bbfd57030b6a1bba14353df9a16c"
+    ],
+    [
+      "0x2c1b77b6744da06739e071ebcc38ade274813dee32cc90b38a581433b770a6e2",
+      "0x1683d157a73f28ac93fc8a497cd71c995de73414775160d8ab5c2b53ea76136f"
+    ]
+  ],
+  "proofC": [
+    "0x0cb469f0fc7f5e271b902a2f2f13721803b08ddddac17389c7460a946c41fa64",
+    "0x1d103dbe0e14d643136a67eb6b70e99da3ce98b0d68af48b5524cb2be0e374c7"
+  ],
+  "publicSignals": [
+    "1242264296625152800395229346494880167246803611298647770042547519035635177128",
+    "1000000"
+  ],
+  "warning": "LOCAL TRUSTED SETUP — not production ceremony material"
+}

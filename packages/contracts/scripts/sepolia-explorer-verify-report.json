@@ -1,0 +1,118 @@
+{
+  "finishedAt": "2026-09-05T09:25:36.517Z",
+  "skipped": {
+    "poseidon": "0x445a87927c731b741e349d917108e5f6d0b0c24b",
+    "reason": "Deployed from raw circomlib bytecode — no Solidity source in this repo",
+    "eoa": [
+      "0x0435d21D40dB54480EdCdbd58C2bd72C0d2122d1",
+      "0x98f28F2818de6A7120C6b1887611B14935d27e72"
+    ]
+  },
+  "etherscanSubmitted": true,
+  "results": [
+    {
+      "name": "depositRawVerifier",
+      "address": "0xD32d9fA114C47906FbEec52Ecc70d30BB414AedC",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "withdrawRawVerifier",
+      "address": "0x1e50A139EE6058D82d193304363d4ff2583f12C9",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "withdraw1RawVerifier",
+      "address": "0xe3CB9AFeB9584f5021ceb717De9fadf11d30C4C8",
+      "verifier": "etherscan",
+      "ok": false,
+      "already": false,
+      "status": 1
+    },
+    {
+      "name": "withdrawPartialRawVerifier",
+      "address": "0xc6523FEe16c95dCEb3bce8e02b72B45B7966aA2E",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "depositVerifier",
+      "address": "0xca8FD04F5f6C81163EF5f359B60C5C63935BFaD7",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "withdrawVerifier",
+      "address": "0x9494F315Cb08990A077532CF0048661E522FD721",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "withdraw1Verifier",
+      "address": "0x278c986fEc1E7f0f3739565192Ac2c4b22D52106",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "withdrawPartialVerifier",
+      "address": "0xecFDA69e8030362502F6785507DD92bF94dE045B",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "pool_eth",
+      "address": "0x28f746B496520216BFC88669A3E268f1E04926F2",
+      "verifier": "etherscan",
+      "ok": false,
+      "already": false,
+      "status": 1
+    },
+    {
+      "name": "pool_dai",
+      "address": "0x8232320C7aFd02c7d4d1EAfaB352FE941c1C1a7E",
+      "verifier": "etherscan",
+      "ok": false,
+      "already": false,
+      "status": 1
+    },
+    {
+      "name": "pool_lusd",
+      "address": "0x7E05c4e5b27dE34731AaD5337b2410b45f334472",
+      "verifier": "etherscan",
+      "ok": false,
+      "already": false,
+      "status": 1
+    },
+    {
+      "name": "tDAI",
+      "address": "0x322c94Da70896A075136809eE54c73b06faE2c50",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": false,
+      "status": 0
+    },
+    {
+      "name": "tLUSD",
+      "address": "0x1fF7421311e54551401Cb90586913256FF496a87",
+      "verifier": "etherscan",
+      "ok": true,
+      "already": true,
+      "status": 0
+    }
+  ]
+}

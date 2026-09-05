@@ -1,0 +1,8 @@
+node_modules/
+.smoke-e2e/
+.smoke-e2e-delay/
+*.apbackup
+notes.json
+public_state.json
+*_call.json
+*_proof.json

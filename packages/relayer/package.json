@@ -1,0 +1,15 @@
+{
+  "name": "@absolute-privacy/relayer",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Local Sepolia withdraw relayer — broadcasts client-built calldata only (no note secrets).",
+  "scripts": {
+    "start": "node ./src/server.mjs",
+    "dev": "node ./src/server.mjs",
+    "test": "node --test ./src/allowlist.test.mjs"
+  },
+  "dependencies": {
+    "viem": "^2.31.0"
+  }
+}

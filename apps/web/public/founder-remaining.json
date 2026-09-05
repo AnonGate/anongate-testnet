@@ -1,0 +1,41 @@
+{
+  "format": "absolute-privacy-founder-remaining",
+  "version": 1,
+  "updatedAt": "2026-08-05",
+  "intro": "Items still outside the app before Mainnet. Sepolia testing does not require them. Privacy on-chain comes from the circuits; Ceremony/audit are about trust and soundness for real funds.",
+  "items": [
+    {
+      "id": "ceremony-mpc",
+      "title": "Trusted Ceremony (MPC)",
+      "summary": "Replace LOCAL TRUSTED proving keys with multi-party finals under packages/circuits/ceremony/finals/. Needed before Mainnet with user funds — not required for Sepolia.",
+      "owner": "you",
+      "when": "Before Mainnet / public liquidity",
+      "docs": [
+        "docs/MANUAL_NEXT_STEPS_V1.md",
+        "CEREMONY_OPS_RUNBOOK_V1.md",
+        "packages/circuits/ceremony/ceremony_params.template.json"
+      ]
+    },
+    {
+      "id": "ceremony-params",
+      "title": "Fill ceremony_params.json",
+      "summary": "Copy the template and set coordinatorContact + attestationPublishWhere (keep status draft until you recruit). Does not start the MPC by itself.",
+      "owner": "you",
+      "when": "When you are ready to organize contributors",
+      "docs": [
+        "packages/circuits/ceremony/ceremony_params.template.json"
+      ]
+    },
+    {
+      "id": "external-audit",
+      "title": "External security audit",
+      "summary": "Engage a ZK + EVM privacy auditor. Send a frozen commit, four product circuits, ShieldedPool, and honest key status (LOCAL TRUSTED vs ceremony-final).",
+      "owner": "you",
+      "when": "Before treating the system as production-ready",
+      "docs": [
+        "EXTERNAL_AUDIT_CHECKLIST_V1.md",
+        "docs/MANUAL_NEXT_STEPS_V1.md"
+      ]
+    }
+  ]
+}

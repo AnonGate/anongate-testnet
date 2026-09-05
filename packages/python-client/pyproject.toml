@@ -1,0 +1,18 @@
+[project]
+name = "absolute-privacy"
+version = "0.0.1"
+description = "Reference Python client for Absolute Privacy (local secrets, optional RPC)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+ap-py = "absolute_privacy.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["absolute_privacy*"]

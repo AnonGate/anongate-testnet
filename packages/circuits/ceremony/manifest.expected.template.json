@@ -1,0 +1,128 @@
+{
+  "format": "absolute-privacy-ceremony-manifest",
+  "version": 2,
+  "status": "PLACEHOLDER — not a completed ceremony",
+  "frozenGitCommit": null,
+  "warning": "Template only. A mainnet manifest must pass manifest.schema.json and pin real multi-party finals. Never substitute *_dev, *_trusted, practice, mock, or local artifacts.",
+  "circuits": {
+    "deposit": {
+      "revision": 1,
+      "topology": { "treeDepth": 0, "inputNotes": 0, "outputNotes": 1 },
+      "publicInputCount": 2,
+      "source": {
+        "path": "packages/circuits/src/deposit.circom",
+        "sha256": null
+      },
+      "r1cs": {
+        "path": "packages/circuits/build/deposit.r1cs",
+        "sha256": null
+      },
+      "finalZkey": {
+        "path": "packages/circuits/ceremony/finals/deposit_final.zkey",
+        "sha256": null
+      },
+      "vkey": {
+        "path": "packages/circuits/ceremony/finals/deposit_vkey.json",
+        "sha256": null
+      },
+      "verifierSolidity": {
+        "path": "packages/contracts/src/verifiers/ceremony/deposit_CeremonyVerifier.sol",
+        "sha256": null
+      },
+      "deployedVerifier": {
+        "adapterRuntimeCodehash": null,
+        "rawVerifierRuntimeCodehash": null
+      }
+    },
+    "withdraw": {
+      "revision": 3,
+      "topology": { "treeDepth": 20, "inputNotes": 2, "outputNotes": 0 },
+      "publicInputCount": 6,
+      "source": {
+        "path": "packages/circuits/src/withdraw.circom",
+        "sha256": null
+      },
+      "r1cs": {
+        "path": "packages/circuits/build/withdraw.r1cs",
+        "sha256": null
+      },
+      "finalZkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_final.zkey",
+        "sha256": null
+      },
+      "vkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_vkey.json",
+        "sha256": null
+      },
+      "verifierSolidity": {
+        "path": "packages/contracts/src/verifiers/ceremony/withdraw_CeremonyVerifier.sol",
+        "sha256": null
+      },
+      "deployedVerifier": {
+        "adapterRuntimeCodehash": null,
+        "rawVerifierRuntimeCodehash": null
+      }
+    },
+    "withdraw_1in": {
+      "revision": 3,
+      "topology": { "treeDepth": 20, "inputNotes": 1, "outputNotes": 0 },
+      "publicInputCount": 5,
+      "source": {
+        "path": "packages/circuits/src/withdraw_1in.circom",
+        "sha256": null
+      },
+      "r1cs": {
+        "path": "packages/circuits/build/withdraw_1in.r1cs",
+        "sha256": null
+      },
+      "finalZkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_1in_final.zkey",
+        "sha256": null
+      },
+      "vkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_1in_vkey.json",
+        "sha256": null
+      },
+      "verifierSolidity": {
+        "path": "packages/contracts/src/verifiers/ceremony/withdraw_1in_CeremonyVerifier.sol",
+        "sha256": null
+      },
+      "deployedVerifier": {
+        "adapterRuntimeCodehash": null,
+        "rawVerifierRuntimeCodehash": null
+      }
+    },
+    "withdraw_partial": {
+      "revision": 3,
+      "topology": { "treeDepth": 20, "inputNotes": 1, "outputNotes": 1 },
+      "publicInputCount": 6,
+      "source": {
+        "path": "packages/circuits/src/withdraw_partial.circom",
+        "sha256": null
+      },
+      "r1cs": {
+        "path": "packages/circuits/build/withdraw_partial.r1cs",
+        "sha256": null
+      },
+      "finalZkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_partial_final.zkey",
+        "sha256": null
+      },
+      "vkey": {
+        "path": "packages/circuits/ceremony/finals/withdraw_partial_vkey.json",
+        "sha256": null
+      },
+      "verifierSolidity": {
+        "path": "packages/contracts/src/verifiers/ceremony/withdraw_partial_CeremonyVerifier.sol",
+        "sha256": null
+      },
+      "deployedVerifier": {
+        "adapterRuntimeCodehash": null,
+        "rawVerifierRuntimeCodehash": null
+      }
+    }
+  },
+  "contributors": [],
+  "auditorSignOff": null,
+  "notes": "Copy to manifest.expected.json only after finals exist. Fill every hash, run ceremony:verify, deploy raw verifiers and adapters, then pin both deployed runtime codehashes before mainnet."
+}

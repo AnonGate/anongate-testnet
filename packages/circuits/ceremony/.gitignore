@@ -1,0 +1,8 @@
+*
+!.gitignore
+!README.md
+!manifest.expected.template.json
+!contributor_attestation.template.json
+!ceremony_params.template.json
+!finals/
+!finals/.gitkeep

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#131313"/>
+  <g fill="none" stroke="rgba(33,201,94,0.45)" stroke-width="1.4">
+    <path d="M600 70 L340 220 L180 390 L90 560"/>
+    <path d="M340 220 L420 390 L300 560"/>
+    <path d="M600 70 L860 220 L1020 390 L1110 560"/>
+    <path d="M860 220 L780 390 L900 560"/>
+    <path d="M600 70 L600 250 L480 430 L720 430 L600 250"/>
+    <path d="M480 430 L360 560"/>
+    <path d="M480 430 L540 560"/>
+    <path d="M720 430 L660 560"/>
+    <path d="M720 430 L840 560"/>
+  </g>
+  <circle cx="600" cy="70" r="11" fill="rgba(33,201,94,0.28)" stroke="rgba(33,201,94,0.7)" stroke-width="1"/>
+  <circle cx="340" cy="220" r="8" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="860" cy="220" r="8" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="180" cy="390" r="7" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="420" cy="390" r="7" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="600" cy="250" r="9" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="780" cy="390" r="7" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="1020" cy="390" r="7" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="90" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="300" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="360" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="540" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="660" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="840" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="900" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+  <circle cx="1110" cy="560" r="6" fill="rgba(33,201,94,0.12)" stroke="rgba(33,201,94,0.55)" stroke-width="1"/>
+</svg>

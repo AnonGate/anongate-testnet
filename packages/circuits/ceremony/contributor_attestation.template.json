@@ -1,0 +1,22 @@
+{
+  "format": "absolute-privacy-ceremony-attestation",
+  "version": 1,
+  "warning": "Practice or production attestation template. Filling this does not complete the ceremony by itself.",
+  "circuit": "deposit | transfer | withdraw",
+  "contributorName": null,
+  "contributorContact": null,
+  "software": {
+    "snarkjs": null,
+    "node": null,
+    "os": null
+  },
+  "contribution": {
+    "fromZkeySha256": null,
+    "toZkeySha256": null,
+    "entropySource": "describe without revealing secrets",
+    "performedAt": null,
+    "airgapped": null
+  },
+  "attestationText": "I independently contributed to the Absolute Privacy Phase 2 setup for the named circuit. I did not collude to retain toxic waste. The hashes above match the files I produced.",
+  "signatureOrPublicPostUrl": null
+}
